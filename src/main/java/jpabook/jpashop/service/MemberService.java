@@ -12,8 +12,8 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true) // JPA의 데이터 변경, 로직들은 트랜잭션 안에서 실행 되어야 함, LAZY 로딩 등등
-// @AllArgsConstructor
 // readOnly 일 경우 성능 최적화함, 더티 체킹 x, 리소스 down
+// @AllArgsConstructor
 @RequiredArgsConstructor // final이 있는 필드만 생성자 생성
 public class MemberService {
 

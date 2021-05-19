@@ -7,10 +7,10 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create #애플리케이션 실행시점에 테이블 지우고 재생성
     properties:
       hibernate:
-        # show_sql: true # System.out 으로 출력 사용 X
+        # show_sql: true # System.out 으로 출력 사용 X - 운영환경에서도 로거로 찍는게 좋음
         format_sql: true
 
 logging:
