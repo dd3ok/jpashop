@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -14,6 +16,7 @@ import static javax.persistence.FetchType.LAZY;
 @Table(name = "orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
     @Id
     @GeneratedValue
@@ -81,6 +84,7 @@ public class Order {
             throw new IllegalStateException("이미 배송 완료된 상품은 취소가 불가능합니다.");
         }
 
+        // JPA에서 엔티티 안의 데이터들을 바꿔주면 JPA가 변경 포인트들(더티체킹=변경내역감지) DB에 업데이트 쿼리를 날려줌
         this.setStatus(OrderStatus.CANCEL);
         for (OrderItem orderItem : this.orderItems) {
             orderItem.cancel();
